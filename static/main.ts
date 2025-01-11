@@ -222,7 +222,11 @@ addListButton.addEventListener("click", async () => {
     const newList = await createList(listTitle);
 
     // Update the current list to the newly created list
-    currentList = newList;
+
+    if (currentList){
+        currentList.style.border = "2px solid white"; // Reset background to white
+    }
+        currentList = newList;
 });
 
 // Add tasks to the currently selected list
@@ -245,13 +249,16 @@ document.body.addEventListener("click", (event) => {
         console.log("Selector, ul: ", ul)
 
         if (ul && ul.classList.contains("task-list")) {
+            
             // Check if the clicked list is already selected
-
             if (currentList === ul) {
+               
                 // Deselect the current list
                 currentList.style.border = "2px solid white"; // Reset background to white
                 currentList = null; // Clear the reference
+            
             } else {
+
                 // Deselect the previously selected list, if any
                 if (currentList) {
                     currentList.style.border = "2px solid white";

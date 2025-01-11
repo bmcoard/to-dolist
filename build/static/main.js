@@ -195,6 +195,9 @@ addListButton.addEventListener("click", () => __awaiter(void 0, void 0, void 0, 
     }
     const newList = yield createList(listTitle);
     // Update the current list to the newly created list
+    if (currentList) {
+        currentList.style.border = "2px solid white"; // Reset background to white
+    }
     currentList = newList;
 }));
 // Add tasks to the currently selected list
